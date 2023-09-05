@@ -3,4 +3,6 @@
     <string name="text">Android App!!</string>
     <string name="My_name">Okamoto</string>
     <string name="change">CHANGE!!</string>
+    <string name="savebutton">SAVE</string>
+    <string name="numButton">NUMSAVE</string>
 </resources>

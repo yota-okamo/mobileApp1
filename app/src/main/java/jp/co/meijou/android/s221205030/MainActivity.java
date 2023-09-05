@@ -15,12 +15,22 @@ import jp.co.meijou.android.s221205030.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
+    private PrefDataStore prefDataStore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        prefDataStore = PrefDataStore.getInstance(this);
+
+
+
+        /*
+        prefDataStore.getString(0)
+                        .ifPresent(0 -> binding.text.);
+        */
+
 
         binding.change.setOnClickListener(view -> {
             var text = binding.editText.getText().toString();
@@ -41,7 +51,9 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                binding.text.setText(s.toString());
+                var text = binding.editText.getText().toString();
+                var text2 = binding.editText2.getText().toString();
+                binding.text.setText(text + text2);
             }
         });
 
@@ -58,11 +70,32 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                binding.text.setText(s.toString());
+                var text = binding.editText.getText().toString();
+                var text2 = binding.editText2.getText().toString();
+                binding.text.setText(text + text2);
 
             }
         });
 
+        binding.savebutton.setOnClickListener(v -> {
+            var text = binding.editText.getText().toString();
+            prefDataStore.setString("name", text);
+        });
+
+        /*
+        binding.numButton.setOnClickListener(v -> {
+            var text = binding.editText2.getText().toString();
+            int num = Integer.parseInt(text);
+            prefDataStore.setInt(0, num);
+        });
+         */
+
 
     }
-}
+    @Override
+        protected void onStart() {
+            super.onStart();
+            prefDataStore.getString("name")
+                    .ifPresent(name -> binding.text.setText(name));
+}}
+

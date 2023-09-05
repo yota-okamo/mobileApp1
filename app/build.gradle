@@ -35,6 +35,8 @@ android {
 
 dependencies {
 
+    implementation 'androidx.datastore:datastore-rxjava3:1.0.0'
+    implementation 'androidx.datastore:datastore-preferences-rxjava3:1.0.0'
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.3'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.9.0'
