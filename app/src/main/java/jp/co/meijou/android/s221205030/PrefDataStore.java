@@ -46,8 +46,7 @@ public class PrefDataStore {
                 .subscribe();
     }
 
-    /*
-    public  void setInt(int key, int value){
+    public  void setInt(String  key, int value){
         dataStore.updateDataAsync(prefsIn -> {
             var mutablePreferences = prefsIn.toMutablePreferences();
             var prefkey = PreferencesKeys.intKey(key);
@@ -58,7 +57,7 @@ public class PrefDataStore {
           .subscribe();
     }
 
-     */
+
 
     public Optional<String> getString(String key) {
         return dataStore.data()
@@ -75,11 +74,10 @@ public class PrefDataStore {
                 .blockingFirst();
     }
 
-    /*
-    public Optional<String> getString(Integer key) {
+    public Optional<Integer> getInt(String key) {
         return dataStore.data()
                 .map(prefs -> {
-                    var prefKey = PreferencesKeys.stringKey(key);
+                    var prefKey = PreferencesKeys.intKey(key);
 
 
 
@@ -91,7 +89,7 @@ public class PrefDataStore {
                 .blockingFirst();
     }
 
-     */
+
 
 
 }

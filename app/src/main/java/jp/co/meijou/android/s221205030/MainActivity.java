@@ -26,10 +26,10 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        /*
-        prefDataStore.getString(0)
-                        .ifPresent(0 -> binding.text.);
-        */
+
+        prefDataStore.getInt("num")
+                        .ifPresent(num -> binding.text.setText(num));
+
 
 
         binding.change.setOnClickListener(view -> {
@@ -82,13 +82,13 @@ public class MainActivity extends AppCompatActivity {
             prefDataStore.setString("name", text);
         });
 
-        /*
+
         binding.numButton.setOnClickListener(v -> {
             var text = binding.editText2.getText().toString();
             int num = Integer.parseInt(text);
-            prefDataStore.setInt(0, num);
+            prefDataStore.setInt("num", num);
         });
-         */
+
 
 
     }
